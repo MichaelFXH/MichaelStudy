@@ -8,6 +8,3 @@
 
 
 AI: facebook 算法框架pytorch
-
-学习还是囤积
-
