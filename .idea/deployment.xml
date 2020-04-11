@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@47.105.89.173:22">
+    <serverData>
+      <paths name="root@47.105.89.173:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/jps" local="$PROJECT_DIR$/jps" web="http://127.0.0.1" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

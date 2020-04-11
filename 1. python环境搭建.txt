@@ -1,0 +1,56 @@
+﻿
+python编译安装
+# python -V    # 查看python 版本
+# cd /home/centos/Downloads    # 进入存放目录
+# wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tar.xz    # 获取新版的 python
+# tar xvf Python-3.6.1.tar.xz    # 解压文件
+# cd ./Python-3.6.1     # 进入解压后的文件目录
+# yum install gcc   安装gcc
+# mkdir /usr/local/python3    # 创建编译安装目录
+# yum install openssl-devel
+# yum install sqlite*   如果使用sqlite 数据库
+# ./configure  --with-ssl --prefix=/usr/local/python3  --enable-optimizations  # 配置编译安装目录
+# make && make install    # 编译安装
+zipimport.ZipImportError: can't decompress data; zlib not available
+
+
+解决 zipimport.ZipImportError: can't decompress data; zlib not available 的方法：
+1、输入一下命令安装zlib相关依赖包：
+    yum -y install zlib*
+2、进入 Python安装包,修改Module路径的setup.dist文件：
+vim module/setup.dist 
+找到一下一行代码，去掉注释：
+#zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz
+去掉注释
+     zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz
+ 另外，在这里说明一下，对于在安装Python安装的过程中遇到这个问题，安装完上面的依赖包后，即可重新进入终端，进入python的安装包路径下执行：
+    make && make install
+
+ /usr/local/python3/bin/python3  执行
+ ln -s /usr/local/python3/bin/python3  /usr/bin/python
+
+
+重新安装 python3:
+# cd /home/centos/Downloads/Python-3.6.1
+# ./configure -- prefix=/usr/local/python3
+# make && make install
+# mv /usr/bin/python /usr/bin/python_old    # 备份旧的python
+# ln -s /usr/local/python3/bin/python3 /usr/bin/python    # 把新的 python3 链接到 python
+# python
+Python 3.6.1 (default, May 30 2017, 18:13:28) 
+# yum search    # 安装完后导致 yum 不可用
+File "/usr/bin/yum", line 30
+    except KeyboardInterrupt, e:
+                            ^
+SyntaxError: invalid syntax
+
+解决 yum 不可用：
+# vi /usr/bin/yum
+#!/usr/bin/python    改成：    #!/usr/bin/python_old
+# yum search
+
+
+pyenv 
+
+python 多版本管理工具
+管理python版本
